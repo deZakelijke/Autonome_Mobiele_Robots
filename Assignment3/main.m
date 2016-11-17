@@ -13,38 +13,38 @@ url = get_camera_url();
 %                     Rmax was already loaded when calling "calibrate_camera.m"
 % Rmin = 77;%         Min detectable distance in pixels in VGA image
 %                     Rmin was already loaded when calling "calibrate_camera.m"
-alpha = 130;%          Radial distortion coefficient, YOU MAY NEED TO TUNE THIS PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-height = 0.10;%       camera height in meters, YOU MAY NEED TO TUNE THIS PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Bwthreshold = 100;%   Threshold for segment the image into Black & white colors, YOU MAY NEED TO TUNE THIS PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+alpha = 65;%          Radial distortion coefficient, YOU MAY NEED TO TUNE THIS PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+height = 0.20;%       camera height in meters, YOU MAY NEED TO TUNE THIS PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Bwthreshold = 80;%   Threshold for segment the image into Black & white colors, YOU MAY NEED TO TUNE THIS PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 angstep = 1.0;%       Angular step of the beam in degrees
-axislimit = 0.2;%     Axis limit
+axislimit = 0.6;%     Axis limit
 
 
 % -------------------------------------------------------------------------
 % MAIN
 % -------------------------------------------------------------------------
 
-%[Rmin, Rmax, center] = calibrate_camera();
-Rmin = 60;
-Rmax = 160;
-center = [324.9906 258.7876];
+%[Rmin, Rmax, center] = calibrate_camera()
+Rmin = 90;
+Rmax = 185;
+center = [417.5814 780.7099];
 %while 1
     tic;%                               Start counting elapsed time
     
-    %snapshot = imread(url); %           acquire image    
-    snapshot = imread('example_a.jpg');
-
+    snapshot = imread(url); %           acquire image    
+    %snapshot = imread('example_a.jpg');
+    
     [undistortedimage, theta] = imunwrap(snapshot, center, angstep, Rmax, Rmin);
 
     figure;
     imagesc(undistortedimage);
     colormap(gray);
-    %imshow(undistortedimage);
+    imshow(undistortedimage);
     
     % parameter needs fintetuning
     BWimg = img2bw(undistortedimage, Bwthreshold); 
-    rho = getpixeldistance(BWimg, Rmin)
-    %imshow(BWimg, [0 1]);
+    rho = getpixeldistance(BWimg, Rmin);
+    imshow(BWimg, [0 1]);
 
 
     figure;
@@ -59,7 +59,7 @@ center = [324.9906 258.7876];
     draw_undistorted_beam(dist, theta, axislimit);
 
 
-    sigmaRho = compute_stdDev(rho)
+    sigmaRho = compute_stdDev(rho);
 
     sigmaDist = compute_uncertainty(rho, sigmaRho, alpha, height);
     hold on;

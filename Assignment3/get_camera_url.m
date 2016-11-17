@@ -1,2 +1,2 @@
 function url = get_camera_url()
-url = 'http://145.18.169.162:8080//shot.jpg';
+url = 'http://10.42.0.241:8080/shot.jpg';
