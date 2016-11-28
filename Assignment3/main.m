@@ -2,6 +2,8 @@
 %
 %   Author Davide Scaramuzza - davide.scaramuzza@ieee.org
 %   ETH Zurich - April, 25, 2007
+%   Edited by Micha de Groot, Harm Manders and Yuri Sturkenboom
+%   University of Amsterdam - November 27, 2016
 
 clc;
 url = get_camera_url();
@@ -46,6 +48,8 @@ center = [417.5814 780.7099];
     rho = getpixeldistance(BWimg, Rmin);
     imshow(BWimg, [0 1]);
 
+    % returns a *vecotr* of distances for each of rho
+    rho = getpixeldistance(BWimg, Rmin)
 
     figure;
     imagesc(snapshot);
@@ -53,7 +57,7 @@ center = [417.5814 780.7099];
     drawlaserbeam(center, theta, rho);
     hold off;
 
-
+    % here the distance measurements are undistorted and plotted
     dist = undistort_dist_points(theta, rho, alpha, height);
     figure;
     draw_undistorted_beam(dist, theta, axislimit);
@@ -61,14 +65,10 @@ center = [417.5814 780.7099];
 
     sigmaRho = compute_stdDev(rho);
 
+    % finally, the uncertainty for each distance measure is computed and plotted
     sigmaDist = compute_uncertainty(rho, sigmaRho, alpha, height);
     hold on;
     draw_uncertainty(dist, theta, sigmaDist);
-
-    % READ THE PDF DOCUMENT AND FILL THIS LOOP 
-    % REMEMBER THAT YOU HAVE TO FLIP THE IMAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    
     
     
 % Compute the time per frame and effective frame rate.
