@@ -2,10 +2,10 @@ function dist = CalibrateScans(center, Rmax, Rmin)
 
 N = 722;
 
-alpha = 107;%         Radial distortion coefficient
-height = 0.1261;%     camera height in meters
+alpha = 150;%         Radial distortion coefficient
+height = 0.09;%     camera height in meters
 
-BWthreshold = 180; %   Threshold for segment the image into Black & white colors
+BWthreshold = 0.4; %   Threshold for segment the image into Black & white colors
 angstep = 360/N;%         Angular step of the beam in degrees
 axislimit = 0.8;%     Axis limit
 
@@ -19,7 +19,7 @@ while true
 
     [undistortedimg, theta] = imunwrap( snapshot , center, angstep, Rmax, Rmin);% Transform omnidirectional image into a rectangular image
 
-    BWimg = img2bw( undistortedimg , BWthreshold ); % Binarize rectangular image into Blak&White
+    BWimg = im2bw( undistortedimg , BWthreshold ); % Binarize rectangular image into Blak&White
 
     rho = getpixeldistance( BWimg , Rmin );%     Get radial distance (this distance is still affected by radial distortion)
 

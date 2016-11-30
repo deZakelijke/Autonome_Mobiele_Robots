@@ -11,11 +11,11 @@ function test_laserscan(graph_number, center, Rmax, Rmin)
 %                     Rmax was already loaded when calling "calibrate_camera.m"
 % Rmin = 77;%         Min detectable distance in pixels in VGA image
 %                     Rmin was already loaded when calling "calibrate_camera.m"
-alpha = 112;%         Radial distortion coefficient
-height = 0.17;%       camera height in meters
-BWthreshold = 180;%   Threshold for segment the image into Black & white colors
+alpha = 230;%         Radial distortion coefficient
+height = 0.09;%       camera height in meters
+BWthreshold = 0.45;%   Threshold for segment the image into Black & white colors
 angstep = 1;%         Angular step of the beam in degrees
-axislimit = 0.8;%     Axis limit
+axislimit = 0.2;%     Axis limit
 
 % which graph to plot
 graph_numbers = ['1', '2'];
@@ -29,7 +29,7 @@ while 1
     snapshot  = imread(url);%     Acquire image
     snapshot = imflipud(snapshot);%   Flip the image Up-Down
     [undistortedimg, theta] = imunwrap(snapshot, center, angstep, Rmax, Rmin);% Transform omnidirectional image into a rectangular image
-    BWimg = img2bw(undistortedimg, BWthreshold);% Binarize rectangular image into Blak&White
+    BWimg = im2bw(undistortedimg, BWthreshold);% Binarize rectangular image into Blak&White
     rho = getpixeldistance(BWimg, Rmin);%     Get radial distance (this distance is still affected by radial distortion)
     
     if graph_number == graph_numbers(1)
@@ -49,7 +49,7 @@ while 1
     
     % if graph_number == graph_numbers(3)    
     %     figure(3);        
-    %     c = img2bw(grayimg ,BWthreshold);
+    %     c = im2bw(grayimg ,BWthreshold);
     %     imagesc(c);
     %     colormap(gray);
     %     drawnow;

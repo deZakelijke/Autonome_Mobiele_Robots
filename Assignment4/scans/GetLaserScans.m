@@ -11,8 +11,8 @@ function dist = GetLaserScans(N, center, Rmax, Rmin)
 % MOST IMPORTANT PARAMETERS
 % -------------------------------------------------------------------------
 
-alpha = 107;%         Radial distortion coefficient
-height = 0.1261;%     camera height in meters
+alpha = 180;%         Radial distortion coefficient
+height = 0.09;%     camera height in meters
 
 % ------Old values ------
 %alpha = 112;%         Radial distortion coefficient:  Robot ASL2: 112, other: 107
@@ -20,16 +20,16 @@ height = 0.1261;%     camera height in meters
 %height = 0.17;%       camera height in meters
 % ---------------------------
 
-BWthreshold = 180; %   Threshold for segment the image into Black & white colors
+BWthreshold = 0.45; %   Threshold for segment the image into Black & white colors
 angstep = 360/N;   %   Angular step of the beam in degrees
-axislimit = 0.8;   %   Axis limit
+axislimit = 0.2;   %   Axis limit
 
 url = get_camera_url();
 snapshot = imread(url); %      Acquire image
 snapshot = imflipud( snapshot );%   Flip the image Up-Down
 
 [undistortedimg, theta] = imunwrap( snapshot , center, angstep, Rmax, Rmin);% Transform omnidirectional image into a rectangular image
-BWimg = img2bw( undistortedimg , BWthreshold ); % Binarize rectangular image into Blak&White
+BWimg = im2bw( undistortedimg , BWthreshold ); % Binarize rectangular image into Blak&White
 rho = getpixeldistance( BWimg , Rmin );%     Get radial distance (this distance is still affected by radial distortion)
 
 figure(3);
@@ -43,7 +43,7 @@ dist = undistort_dist_points( theta , rho , alpha , height );
 % draw_undisdtorted_beam( dist , theta , axislimit );
 % drawnow;
 
-% c = img2bw( grayimg , BWthreshold );
+% c = im2bw( grayimg , BWthreshold );
 % figure(3); imagesc(c);
 % colormap(gray);
 % drawnow;
