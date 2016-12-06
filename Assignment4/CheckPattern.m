@@ -7,19 +7,29 @@ text = 'Write your code here to compute the probability of localization using an
 disp(text);
 text = '(e.g. line patterns, blob patterns or fusion of these 2 patterns).';
 disp(text);
-load 'LineSignatures.mat'
+load 'LabeledLineSignatures.mat'
+load 'UnlabeledLineSignatures.mat'
 
-newObs = PatStrings{1};
+newObs = PatStringsU{1}
 sz = size(PatStrings,2);
-label = PlaceID(1);
-
+locations = unique(PlaceID);
+probList = [];
 ProbMax = 0;
 
-for i=1:3
-   similarity = (length(newObs)+ LevenshteinDistance(newObs, PatStrings{i})) /length(newObs);
-   
-   prob = similarity * ;
+for i=1:length(locations)
+    obsIndex = find(PlaceID ==  i);
+    obsIndex = obsIndex(1);
+    PatStrings{obsIndex}
+    dist = LevenshteinDistance(newObs, PatStrings{obsIndex});
+    len = length(newObs);
+    similarity = (len -dist ) /len
+    roomQuantity = sum(PlaceID(:) == i);
+    probLocation =  roomQuantity/length(PlaceID);
+    prob = similarity * probLocation;
+    probList = [probList prob];
    
 end
+
+probList
 
 end
