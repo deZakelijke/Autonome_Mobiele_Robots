@@ -5,11 +5,13 @@ PatStrings = {};
 PatStringsU = {};
 PlaceID = [];
 
-ax = 0.4
+ax = 0.8
 
 training = input('Is it labeled or unlabeled data [l/u]:', 's');
 
-while true
+imgNum = 1;
+while imgNum < 9
+
   
   % Get user input for looping
   Option = input('Get a new scan [1/0] : ');
@@ -20,7 +22,7 @@ while true
   end;
   
   % Get a new scan
-  XY = GetNextScan(center, Rmax, Rmin);
+  XY = GetNextScan(center, Rmax, Rmin, imgNum);
   XY = XY';
   
   % Plot raw scan
@@ -49,7 +51,7 @@ while true
   
   % Store the pattern string and place ID
   %PatStrings{NumStrings} = S;
-    
+  imgNum = imgNum + 1;
 end
 
 

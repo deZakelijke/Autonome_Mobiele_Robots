@@ -1,4 +1,4 @@
-function dist = GetLaserScans(N, center, Rmax, Rmin)
+function dist = GetLaserScans(N, center, Rmax, Rmin, imNr)
 
 
 %   GetLaserScans()
@@ -11,7 +11,7 @@ function dist = GetLaserScans(N, center, Rmax, Rmin)
 % MOST IMPORTANT PARAMETERS
 % -------------------------------------------------------------------------
 
-alpha = 120;%         Radial distortion coefficient
+alpha = 150;%         Radial distortion coefficient
 height = 0.1261;%     camera height in meters
 
 % ------Old values ------
@@ -28,9 +28,12 @@ BWthreshold = 0.4; %   Threshold for segment the image into Black & white colors
 angstep = 360/N;   %   Angular step of the beam in degrees
 axislimit = 0.8;   %   Axis limit
 
+imStr = num2str(imNr);
+fileName = strcat(imStr, '.jpg')
+
 %url = get_camera_url();
 %snapshot = imread(url); %      Acquire image
-snapshot = imread('example_a.jpg');
+snapshot = imread(fileName);
 snapshot = imflipud( snapshot );%   Flip the image Up-Down
 
 [undistortedimg, theta] = imunwrap( snapshot , center, angstep, Rmax, Rmin);% Transform omnidirectional image into a rectangular image

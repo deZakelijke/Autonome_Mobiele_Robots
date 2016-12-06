@@ -9,23 +9,25 @@ disp('starting acquisition. Please wait...');
 
 % read frame from the given url
 %snapshot = imread(url);
-snapshot = imread('example_a.jpg');
+
+snapshot = imread('2.jpg');
 
 % optional, you might want to flip the image upside down
 % snapshot = imflipud( tmpsnapshot );
 
 % Max detectable distance (set to 160 pixel by default in VGA image).
 % Rmax is automatically scaled according to the image size
-Rmax = round( 160/480*size(snapshot,1) );
+Rmax = round( 110/480*size(snapshot,1) );
 % Min detectable distance (set to 77 pixel by default in VGA image).
 % Rmax is automatically scaled according to the image size
-Rmin = round( 77/480*size(snapshot,1) );
+Rmin = round( 60/480*size(snapshot,1) );
 
 % This functrion allows you to calibrate the camera (extract the center of
 % the image). Follow the directions on-line
 figure(1);
-[center, radius] = get_circle(snapshot);
+[center, radius] = get_circle(snapshot)
 % Draw the max and min radius
+
 draw2DCircle(center,Rmin,'m');
 draw2DCircle(center,Rmax,'m');
 
