@@ -1,4 +1,4 @@
-function dist = GetLaserScans(N, center, Rmax, Rmin, imNr)
+function dist = GetLaserScans(N, center, Rmax, Rmin, imNr, training)
 
 
 %   GetLaserScans()
@@ -29,7 +29,11 @@ angstep = 360/N;   %   Angular step of the beam in degrees
 axislimit = 0.8;   %   Axis limit
 
 imStr = num2str(imNr);
-fileName = strcat(imStr, '.jpg')
+if training == 'l'
+    fileName = strcat(imStr, '.jpg');
+else
+    fileName = strcat(imStr, 'Test.jpg');
+end
 
 %url = get_camera_url();
 %snapshot = imread(url); %      Acquire image

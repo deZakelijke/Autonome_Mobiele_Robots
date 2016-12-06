@@ -22,7 +22,7 @@ while imgNum < 9
   end;
   
   % Get a new scan
-  XY = GetNextScan(center, Rmax, Rmin, imgNum);
+  XY = GetNextScan(center, Rmax, Rmin, imgNum, training);
   XY = XY';
   
   % Plot raw scan
