@@ -9,11 +9,11 @@ function test_laserscan(graph_number, center, Rmax, Rmin)
 % -------------------------------------------------------------------------
 % Rmax = 160;%        Max detectable distance, set to 160 pixels in VGA images.
 %                     Rmax was already loaded when calling "calibrate_camera.m"
-% Rmin = 77;%         Min detectable distance in pixels in VGA image
+% Rmin = 90;%         Min detectable distance in pixels in VGA image
 %                     Rmin was already loaded when calling "calibrate_camera.m"
-alpha = 180;%         Radial distortion coefficient
-height = 0.17;%       camera height in meters
-BWthreshold = 0.4;%   Threshold for segment the image into Black & white colors
+alpha = 100;%         Radial distortion coefficient
+height = 0.13;%       camera height in meters
+BWthreshold = 0.5;%   Threshold for segment the image into Black & white colors
 angstep = 1;%         Angular step of the beam in degrees
 axislimit = 0.8;%     Axis limit
 

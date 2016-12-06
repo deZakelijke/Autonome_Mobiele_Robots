@@ -48,7 +48,7 @@ while imgNum < 9
   S = ComputePatStringLines(NLines, segend, seglen);
   disp(fprintf('Pattern string:  %s', num2str(S)));
   
-  
+  PatStrings{NumStrings} = S;
   % Store the pattern string and place ID
   %PatStrings{NumStrings} = S;
   imgNum = imgNum + 1;
@@ -57,10 +57,8 @@ end
 
 % Save pattern strings and place id to output file
 if training == 'l'
-    PatStrings{NumStrings} = S;
     save 'LabeledLineSignatures.mat' PatStrings PlaceID;
 else 
-    PatStringsU{NumStrings} = S;
     save 'UnlabeledLineSignatures.mat' PatStringsU;
 end
 close all

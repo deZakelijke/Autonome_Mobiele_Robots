@@ -12,7 +12,7 @@ function dist = GetLaserScans(N, center, Rmax, Rmin, imNr)
 % -------------------------------------------------------------------------
 
 alpha = 150;%         Radial distortion coefficient
-height = 0.1261;%     camera height in meters
+height = 0.13;%     camera height in meters
 
 % ------Old values ------
 %alpha = 180;%         Radial distortion coefficient:  Robot ASL2: 112, other: 107
@@ -24,7 +24,7 @@ height = 0.1261;%     camera height in meters
 %angstep = 360/N;   %   Angular step of the beam in degrees
 %axislimit = 0.2;   %   Axis limit
 
-BWthreshold = 0.4; %   Threshold for segment the image into Black & white colors
+BWthreshold = 0.5; %   Threshold for segment the image into Black & white colors
 angstep = 360/N;   %   Angular step of the beam in degrees
 axislimit = 0.8;   %   Axis limit
 
