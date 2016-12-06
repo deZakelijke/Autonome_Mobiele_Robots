@@ -6,8 +6,9 @@ figure(1);
 graph_numbers = ['1', '2'];
 
 while(1)
-    url = get_camera_url();
-    snapshot  = imread(url);
+    %url = get_camera_url();
+    %snapshot  = imread(url);
+    snapshot = imread('example_a.jpg');
     if graph_number == graph_numbers(1)
         % first graph
         img_disp = image(snapshot);

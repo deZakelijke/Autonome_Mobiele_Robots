@@ -11,11 +11,11 @@ function test_laserscan(graph_number, center, Rmax, Rmin)
 %                     Rmax was already loaded when calling "calibrate_camera.m"
 % Rmin = 77;%         Min detectable distance in pixels in VGA image
 %                     Rmin was already loaded when calling "calibrate_camera.m"
-alpha = 230;%         Radial distortion coefficient
-height = 0.09;%       camera height in meters
-BWthreshold = 0.45;%   Threshold for segment the image into Black & white colors
+alpha = 112;%         Radial distortion coefficient
+height = 0.17;%       camera height in meters
+BWthreshold = 0.4;%   Threshold for segment the image into Black & white colors
 angstep = 1;%         Angular step of the beam in degrees
-axislimit = 0.2;%     Axis limit
+axislimit = 0.8;%     Axis limit
 
 % which graph to plot
 graph_numbers = ['1', '2'];
@@ -25,8 +25,9 @@ graph_numbers = ['1', '2'];
 % -------------------------------------------------------------------------
 while 1
     tic;%                               Start counting elapsed time    
-    url = get_camera_url(); 
-    snapshot  = imread(url);%     Acquire image
+    %url = get_camera_url(); 
+    %snapshot  = imread(url);%     Acquire image
+    snapshot = imread('example_a.jpg');
     snapshot = imflipud(snapshot);%   Flip the image Up-Down
     [undistortedimg, theta] = imunwrap(snapshot, center, angstep, Rmax, Rmin);% Transform omnidirectional image into a rectangular image
     BWimg = im2bw(undistortedimg, BWthreshold);% Binarize rectangular image into Blak&White

@@ -12,8 +12,9 @@ while true
 	NumStrings = NumStrings + 1;
 	PlaceNum = input('Which place [1/2/3] : ');
 
-    url = get_camera_url();
-	img = imread(url);
+    %url = get_camera_url();
+	%img = imread(url);
+    img = imread('example_a.jpg');
  	figure(12), clf; imshow(img);
 
 	%% img center [row, col]

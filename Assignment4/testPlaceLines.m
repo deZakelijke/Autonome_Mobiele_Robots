@@ -9,7 +9,7 @@ confusion = zeros(sz, sz);
 for i = 1:sz
 	tLD = [];
 	for j = 1:sz
-	%    confusion(i,j) = LevenshteinDistance(PatStrings{i}, PatStrings{j});
+	    confusion(i,j) = LevenshteinDistance(PatStrings{i}, PatStrings{j});
 
 	% rotate string and take minimum distance (max alignment)
 	t1 = PatStrings{j};	

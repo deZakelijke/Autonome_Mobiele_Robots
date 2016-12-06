@@ -2,6 +2,7 @@ function GetLinePattern(center, Rmax, Rmin)
 
 NumStrings = 0;
 PatStrings = {};
+PatStringsU = {};
 PlaceID = [];
 
 ax = 0.4
@@ -15,7 +16,7 @@ while true
   if Option == 0, break; end
   NumStrings = NumStrings + 1;
   if training == 'l'
-    PlaceID(NumStrings)= input('Which place [1/2/3] : ');
+    PlaceID(NumStrings)= input('Which place [1/2/3] : ')
   end;
   
   % Get a new scan
@@ -28,7 +29,7 @@ while true
 
   % Extract line segments
   [NLines, r, alpha, segend, seglen] = recsplit(XY);
-  disp(sprintf('Number of extracted lines: %d\n', NLines));
+  disp(fprintf('Number of extracted lines: %d\n', NLines));
 
   % Plot extracted segments
   figure(2), clf, axis([-ax ax -ax ax]), grid on; hold on;
@@ -43,20 +44,22 @@ while true
   
   % Compute the string
   S = ComputePatStringLines(NLines, segend, seglen);
-  disp(sprintf('Pattern string:  %s', num2str(S)));
+  disp(fprintf('Pattern string:  %s', num2str(S)));
   
   
   % Store the pattern string and place ID
-  PatStrings{NumStrings} = S;
+  %PatStrings{NumStrings} = S;
     
 end
 
 
 % Save pattern strings and place id to output file
 if training == 'l'
+    PatStrings{NumStrings} = S;
     save 'LabeledLineSignatures.mat' PatStrings PlaceID;
 else 
-    save 'UnlabeledLineSignatures.mat' PatStrings;
+    PatStringsU{NumStrings} = S;
+    save 'UnlabeledLineSignatures.mat' PatStringsU;
 end
 close all
 return
