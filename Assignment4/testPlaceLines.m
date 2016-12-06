@@ -1,7 +1,7 @@
 % adapted from luciano's test function
 function testPlaceLines()
 
-load 'LineSignatures.mat';
+load 'LabeledLineSignatures.mat';
 
 sz = size(PatStrings, 2);     
 confusion = zeros(sz, sz);

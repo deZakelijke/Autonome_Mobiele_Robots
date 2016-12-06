@@ -59,7 +59,7 @@ end
 if training == 'l'
     save 'LabeledLineSignatures.mat' PatStrings PlaceID;
 else 
-    save 'UnlabeledLineSignatures.mat' PatStringsU;
+    save 'UnlabeledLineSignatures.mat' PatStrings;
 end
 close all
 return
