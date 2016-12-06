@@ -5,6 +5,7 @@ configfile_blobs;
 
 % Loop - while the user wants, get image, compute pattern, store pattern
 NumStrings = 0;
+imgNum = 1;
 while true
 	% Get user input for looping
 	Option = input('Get a new image [1/0] : ');
@@ -14,7 +15,10 @@ while true
 
     %url = get_camera_url();
 	%img = imread(url);
-    img = imread('example_a.jpg');
+    imgStr = num2str(imgNum);
+    fileName = strcat(imgStr, '.jpg');
+    
+    img = imread(fileName);
  	figure(12), clf; imshow(img);
 
 	%% img center [row, col]
@@ -48,6 +52,8 @@ while true
 
 	S_store(NumStrings).lev = S;
 	PlaceID(NumStrings) = PlaceNum;
+    
+    imgNum = imgNum + 1;
 end
 
 save 'BlobSignatures.mat' S_store PlaceID;

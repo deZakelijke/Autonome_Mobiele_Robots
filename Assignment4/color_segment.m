@@ -129,19 +129,19 @@ end
 
 %%
 % ***** DEBUG **********8
-% figure(343)
-% subplot(2,1,1);
-% RGB = label2rgb(L_a);
-% imshow(RGB);
-% subplot(2,1,2);
-% RGB = label2rgb(L_b);
-% imshow(RGB);
-% figure(2)
-% hold on
-% hold on
-% plot(cl_center(:, 2),  cl_center(:, 1), 'bx', 'MarkerSize', 5);
-% % plot(img_center(:, 2),  img_center(:, 1), 'rx', 'MarkerSize', 5);
-% pause
+figure(343)
+subplot(2,1,1);
+RGB = label2rgb(L_a);
+imshow(RGB);
+subplot(2,1,2);
+RGB = label2rgb(L_b);
+imshow(RGB);
+figure(2)
+hold on
+hold on
+plot(cl_center(:, 2),  cl_center(:, 1), 'bx', 'MarkerSize', 5);
+plot(img_center(:, 2),  img_center(:, 1), 'rx', 'MarkerSize', 5);
+pause
 %% atan is (deltarow, deltacol)
 if(isempty(cl_center) ~= 1)
     
