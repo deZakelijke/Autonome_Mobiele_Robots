@@ -11,9 +11,11 @@ if path_setup == false
     addpath('./scans/');
     addpath('./Trainset AMR/');
 end
-    
+
 % specify which step do you want to run
 step_num = 6;
+
+load 'WorkspaceDump.mat';
 
 if step_num < 1 || step_num > 10
     return;
@@ -38,6 +40,8 @@ end
 %% step 3: calibrate the camera (only once)
 if step_num == 3
     [center, Rmax, Rmin] = calibrate_camera();
+    % Only when new calibration
+    %save 'WorkspaceDump.mat' center Rmax Rmin;
 end  
 
 %% step 4: test the camera calibration
