@@ -10,11 +10,12 @@ if path_setup == false
     path_setup = true;
     addpath('./scans/');
     addpath('./Trainset AMR/');
+    addpath('./Testset AMR/');
 end
 
 % specify which step do you want to run
 
-step_num = 7;
+step_num = 6;
 
 load 'WorkspaceDump.mat';
 
