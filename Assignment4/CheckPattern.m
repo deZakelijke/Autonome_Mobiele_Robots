@@ -10,26 +10,36 @@ disp(text);
 load 'LabeledLineSignatures.mat'
 load 'UnlabeledLineSignatures.mat'
 
-newObs = PatStringsU{1}
-sz = size(PatStrings,2);
-locations = unique(PlaceID);
-probList = [];
-ProbMax = 0;
+testLength = length(PatStringsU);
 
-for i=1:length(locations)
-    obsIndex = find(PlaceID ==  i);
-    obsIndex = obsIndex(1);
-    PatStrings{obsIndex}
-    dist = LevenshteinDistance(newObs, PatStrings{obsIndex});
-    len = length(newObs);
-    similarity = (len -dist ) /len
-    roomQuantity = sum(PlaceID(:) == i);
-    probLocation =  roomQuantity/length(PlaceID);
-    prob = similarity * probLocation;
-    probList = [probList prob];
-   
+for j=1:testLength
+    
+    newObs = PatStringsU{j};
+    sz = size(PatStrings,2);
+    locations = unique(PlaceID);
+    probList = [];
+    ProbMax = 0;
+    
+    for i=1:length(locations)
+        obsIndex = find(PlaceID ==  i);
+        obsIndex = obsIndex(1);
+        PatStrings{obsIndex};
+        dist = LevenshteinDistance(newObs, PatStrings{obsIndex});
+        len = length(PatStrings{obsIndex});
+        similarity = (len -dist ) /len;
+        roomQuantity = sum(PlaceID(:) == i);
+        probLocation =  roomQuantity/length(PlaceID);
+        prob = similarity * probLocation;
+        probList = [probList prob];
+       
+    end
+    
+    [M,I] = max(probList);
+    disp('Testimage: ');
+    disp(j);
+    disp('Room is most likely: ');
+    disp(I);
+    
 end
-
-probList
 
 end

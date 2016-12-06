@@ -14,7 +14,7 @@ if path_setup == false
 end
 
 % specify which step do you want to run
-step_num = 6;
+step_num = 10;
 
 load 'WorkspaceDump.mat';
 
