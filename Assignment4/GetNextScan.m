@@ -1,6 +1,6 @@
 % This function reads a scan from the camera and returns the scan points
 % in cartesian coordinate.
-function  XY = GetNextScan(center, Rmax, Rmin, imNr)
+function  XY = GetNextScan(center, Rmax, Rmin, imNr, training)
   
   configfile_lines;
   path(path, './scans/');
@@ -9,7 +9,7 @@ function  XY = GetNextScan(center, Rmax, Rmin, imNr)
   %  InitCamera;
 
   % Get the laser points in polar coordinate.
-  scans = GetLaserScans(NSCANPOINTS, center, Rmax, Rmin, imNr);
+  scans = GetLaserScans(NSCANPOINTS, center, Rmax, Rmin, imNr, training);
 
   % Convert points to cartesian coordinate
   XY = zeros(NSCANPOINTS,2);
