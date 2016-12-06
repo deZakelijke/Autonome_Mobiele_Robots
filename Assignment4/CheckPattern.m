@@ -35,10 +35,10 @@ for j=1:testLength
     end
     
     [M,I] = max(probList);
-    disp('Testimage: ');
-    disp(j);
-    disp('Room is most likely: ');
-    disp(I);
+    disp('[Testimage, Room] ');
+    disp([j,I]);
+%     disp('Room is most likely: ');
+%     disp(I);
     
 end
 
