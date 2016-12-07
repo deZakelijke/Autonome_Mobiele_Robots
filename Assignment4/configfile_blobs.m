@@ -22,22 +22,22 @@ color_s(1,:) = [0.01 .15];  %orange
 % blue
 % color_s(2,:) = [0.52 0.58];
 
-% color_s(1,:) = [80 140] / 360; % green
+color_s(2,:) = [50 100] / 360; % green
 % color_s(2,:) = [180 225] / 360;  %blue
-color_s(2,:) = [200 320] / 360 % purple
+% color_s(2,:) = [200 320] / 360; % purple
 color_s
 
 %% def values for saturation and luminance
 % sat = [0.3 1];  % use for green
 % sat = [0.01 1];  % orange
-sat = [0.01 0.5];  % orange
+sat = [0.01 0.4];  % orange
 % lum = [0.3 0.95];
 lum = [0.01 0.5];
 
 %% min pxl area
 % min_pxarea = 300;
-min_pxarea = 30;
+min_pxarea = 10;
 max_pxarea = 2000;
 
 %% std threshold for color blob
-stdthreshold = 15;
+stdthreshold = 20;

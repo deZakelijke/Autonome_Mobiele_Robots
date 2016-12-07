@@ -61,7 +61,7 @@ while imgNum <= 8
 
         if training == 'l'
 	    PatStringsBlob{NumStrings} = S;
-	    PlaceID{NumStrings} = PlaceNum;
+	    PlaceID(NumStrings) = PlaceNum;
         else
             PatStringsBlobU{NumStrings} = S;
         end

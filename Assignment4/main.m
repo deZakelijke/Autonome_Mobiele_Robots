@@ -62,7 +62,7 @@ end
 %    GetLinePattern(cent  er, Rmax, Rmin);
 % end
 
-for i=10:10
+for i=8:10
     step_num = i;
     %% steps 1-5: camera and scanning
     %% steps 6-10: localization experiment
@@ -103,6 +103,7 @@ for i=10:10
     if step_num == 6
         % hint: answer the command window instructions
        GetLinePattern(center, Rmax, Rmin);
+       GetLinePattern(center, Rmax, Rmin);
     end
     
     %% step 7: test how distinctive the gathered line patterns
@@ -113,6 +114,7 @@ for i=10:10
     %% step 8: get blob pattern (i.e encoding) of the map
     if step_num == 8
         % hint: answer the command window instructions
+       GetBlobPattern(center, Rmax, Rmin);
        GetBlobPattern(center, Rmax, Rmin);
     end
     
