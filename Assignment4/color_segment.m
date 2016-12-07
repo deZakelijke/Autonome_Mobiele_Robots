@@ -39,10 +39,10 @@ sum(sum(valid_la))
 sum(sum(valid_a))
 
 %% label
-% [L_a, num_a] = bwlabel(valid_a, 8);
-% [L_b, num_b] = bwlabel(valid_b, 8);
-[L_a, num_a] = bwlabel(valid_a, 4);
-[L_b, num_b] = bwlabel(valid_b, 4);
+[L_a, num_a] = bwlabel(valid_a, 8);
+[L_b, num_b] = bwlabel(valid_b, 8);
+% [L_a, num_a] = bwlabel(valid_a, 4);
+% [L_b, num_b] = bwlabel(valid_b, 4);
 
 % imshow(L_a )
 
