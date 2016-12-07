@@ -24,8 +24,6 @@ else
   end
 end
 
-S
-
 return
 
 

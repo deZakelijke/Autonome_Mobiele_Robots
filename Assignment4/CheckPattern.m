@@ -3,9 +3,9 @@ function CheckPattern()
 % Write your code here to compute the probability of localization using any
 % map pattern (e.g. line patterns, blob patterns or fusion of these 2
 % patterns).
-text = 'Write your code here to compute the probability of localization using any map pattern';
+text = 'Room labels based on Pattern string comparision from training data';
 disp(text);
-text = '(e.g. line patterns, blob patterns or fusion of these 2 patterns).';
+text = 'Correct order should be 3,3,2,1,3,3,3,1';
 disp(text);
 
 load 'UnlabeledLineSignatures.mat'

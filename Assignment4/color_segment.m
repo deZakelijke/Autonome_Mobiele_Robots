@@ -33,11 +33,6 @@ valid_a = valid_ha .* valid_sa .* valid_la;
 valid_b = valid_hb .* valid_sb .* valid_lb;
 
 
-sum(sum(valid_ha))
-sum(sum(valid_sa))
-sum(sum(valid_la))
-sum(sum(valid_a))
-
 %% label
 [L_a, num_a] = bwlabel(valid_a, 8);
 [L_b, num_b] = bwlabel(valid_b, 8);
@@ -90,7 +85,7 @@ for i = 1:num_a
 	if( (cc1 - rc)^2 + (cc2 - cc)^2 < radius^2)
 		if( (cc1 - rc)^2 + (cc2 - cc)^2 > radius_inner^2)
 			if ( (cstd <= stdthreshold) && (rstd <= stdthreshold) )
-				[size( (idx),1)	 cstd rstd 1]
+				[size( (idx),1)	 cstd rstd 1];
 				cl_center = [cl_center; [cc1, cc2]];
 				cl_type = [cl_type ; 1];  % 1st color = green
 			end;
@@ -125,7 +120,7 @@ for i = 1:num_b,
 	if( (cc1 - rc)^2 + (cc2 - cc)^2 < radius^2)
 		if( (cc1 - rc)^2 + (cc2 - cc)^2 > radius_inner^2)
 			if ( (cstd <= stdthreshold) && (rstd <= stdthreshold) )
-				[ size( (idx),1) cstd rstd 2 ]
+				[ size( (idx),1) cstd rstd 2 ];
 				cl_center = [cl_center; [cc1, cc2]];
 				cl_type = [cl_type ; 2];  % 2nd color = blue
 			end;
