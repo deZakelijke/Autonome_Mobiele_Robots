@@ -3,17 +3,24 @@ function GetBlobPattern(center, Rmax, Rmin)
 path(path, './scans/');
 configfile_blobs;
 
-S_store = {};
 
 % Loop - while the user wants, get image, compute pattern, store pattern
 NumStrings = 0;
+PatStringsBlob = {};
+PatStringsBlobU = {};
+PlaceID = [];
+
+training = input('Is is labeled or unlabeld data [l\u]:', 's');
+
 imgNum = 1;
 while imgNum <= 8
 	% Get user input for looping
 	Option = input('Get a new image [1/0] : ');
 	if Option == 0, break; end
 	NumStrings = NumStrings + 1;
-	PlaceNum = input('Which place [1/2/3] : ');
+        if training == 'l'
+	    PlaceNum = input('Which place [1/2/3] : ');
+        end
 
     %url = get_camera_url();
 	%img = imread(url);
@@ -52,13 +59,21 @@ while imgNum <= 8
 	S = ComputePatStringBlobs( cl_angles , cl_type);
 	disp(sprintf('BLOB Pattern string:  %s', num2str(S)));
 
-	S_store{NumStrings} = S;
-	PlaceID(NumStrings) = PlaceNum;
+        if training == 'l'
+	    PatStringsBlob{NumStrings} = S;
+	    PlaceID{NumStrings} = PlaceNum;
+        else
+            PatStringsBlobU{NumStrings} = S;
+        end
     
     imgNum = imgNum + 1;
 end
 
-save 'BlobSignatures.mat' S_store PlaceID;
+if training == 'l'
+    save 'LabeledBlobSignatures.mat' PatStringsBlob PlaceID;
+else
+    save 'UnlabeledBlobSignatures.mat' PatStringsBlobU;
+end
 close all
 
 end
