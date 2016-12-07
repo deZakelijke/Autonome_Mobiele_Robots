@@ -59,7 +59,7 @@ end
 %% step 6: get line pattern (i.e encoding) of the map
 if step_num == 6
     % hint: answer the command window instructions
-   GetLinePattern(center, Rmax, Rmin);
+   GetLinePattern(cent  er, Rmax, Rmin);
 end
 
 %% step 7: test how distinctive the gathered line patterns

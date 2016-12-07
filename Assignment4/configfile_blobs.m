@@ -22,10 +22,9 @@ color_s(1,:) = [0.01 .15];  %orange
 % blue
 % color_s(2,:) = [0.52 0.58];
 
-% color_s(1,:) = [118 125] / 255; % green
 % color_s(1,:) = [80 140] / 360; % green
-color_s(2,:) = [180 225] / 360;  %blue
-
+% color_s(2,:) = [180 225] / 360;  %blue
+color_s(2,:) = [200 320] / 360 % purple
 color_s
 
 %% def values for saturation and luminance
