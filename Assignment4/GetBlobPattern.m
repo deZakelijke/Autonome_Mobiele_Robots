@@ -3,6 +3,8 @@ function GetBlobPattern(center, Rmax, Rmin)
 path(path, './scans/');
 configfile_blobs;
 
+S_store = {};
+
 % Loop - while the user wants, get image, compute pattern, store pattern
 NumStrings = 0;
 imgNum = 1;
@@ -50,7 +52,7 @@ while imgNum <= 8
 	S = ComputePatStringBlobs( cl_angles , cl_type);
 	disp(sprintf('BLOB Pattern string:  %s', num2str(S)));
 
-	S_store(NumStrings).lev = S;
+	S_store{NumStrings} = S;
 	PlaceID(NumStrings) = PlaceNum;
     
     imgNum = imgNum + 1;
