@@ -25,7 +25,13 @@ Rmin = round( 60/480*size(snapshot,1) );
 % This functrion allows you to calibrate the camera (extract the center of
 % the image). Follow the directions on-line
 figure(1);
-[center, radius] = get_circle(snapshot)
+
+% Use get_circle for new calibration
+% [center, radius] = get_circle(snapshot)
+
+% Use load WorkspaceDump.mat for calibrated figures
+load 'WorkspaceDump.mat';
+
 % Draw the max and min radius
 
 draw2DCircle(center,Rmin,'m');

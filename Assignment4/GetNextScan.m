@@ -4,7 +4,7 @@ function  XY = GetNextScan(center, Rmax, Rmin, imNr, training)
   
   configfile_lines;
   path(path, './scans/');
-  
+%   NSCANPOINTS = 1440;
   % this can be done once at the beginning
   %  InitCamera;
 

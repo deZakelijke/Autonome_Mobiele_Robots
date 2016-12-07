@@ -11,7 +11,7 @@ function dist = GetLaserScans(N, center, Rmax, Rmin, imNr, training)
 % MOST IMPORTANT PARAMETERS
 % -------------------------------------------------------------------------
 
-alpha = 150;%         Radial distortion coefficient
+alpha = 140;%         Radial distortion coefficient
 height = 0.13;%     camera height in meters
 
 % ------Old values ------

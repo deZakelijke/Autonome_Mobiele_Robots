@@ -14,17 +14,16 @@ if path_setup == false
 end
 
 % specify which step do you want to run
-step_num = 7;
+step_num = 8;
 
 load 'WorkspaceDump.mat';
-
 if step_num < 1 || step_num > 10
-    return;
+%     return;
 end
 
 %% steps 1-5: camera and scanning
 %% steps 6-10: localization experiment
-
+% 
 %% Step 1: Check camera Url
 % please check if the printed url is the correct for the camera
 % if not, edit it accordingly in the function 'get_camera_url'

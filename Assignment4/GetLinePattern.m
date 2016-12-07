@@ -5,7 +5,7 @@ PatStrings = {};
 PatStringsU = {};
 PlaceID = [];
 
-ax = 0.8
+ax = 0.8;
 
 training = input('Is it labeled or unlabeled data [l/u]:', 's');
 

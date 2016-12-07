@@ -25,29 +25,29 @@ for j=1:testLength
         dist = LevenshteinDistance(newObs, PatStrings{i});
         len = length(PatStrings{i});
         similarity = (len -dist ) /len;
-        roomQuantity = sum(PlaceID(:) == i)
-        probLocation =  roomQuantity/length(PlaceID);
+%         roomQuantity = sum(PlaceID(:) == i);
+%         probLocation =  roomQuantity/length(PlaceID);
+        probLocation = 1/length(PlaceID);
         prob = similarity * probLocation;
         probList = [probList prob];
        
     end
-    probList
+%     probList
     [M,I] = max(probList);
-    
-    for i=1:length(locations)
-        obsIndex = find(PlaceID ==  i);
-        obsIndex = obsIndex(1);
-        if I >= obsIndex
-            room = I;
-        end
-    end
+    Room = PlaceID(I);
+%     for i=1:length(locations)
+%         obsIndex = find(PlaceID ==  i);
+%         obsIndex = obsIndex(1);
+%         if I >= obsIndex
+%             room = I;
+%         end
+%     end
 
-    disp('Testimage: ');
-    disp(j);
-    disp('Room is most likely: ');
-    disp(room);
+    disp('[Testimage, Room] ');
+    disp([j,Room]);
+%     disp('Room is most likely: ');
+%     disp(room);
  
-   
 end
 
 end
