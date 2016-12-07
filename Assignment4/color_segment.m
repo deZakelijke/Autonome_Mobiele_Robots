@@ -17,8 +17,10 @@ img_s = img_hsv(:,:,2);
 img_l = img_hsv(:,:,3);
 
 % img_h(175, 53)
-%  img_h(72,268)
+% img_h(72,268) >= color_s(1,1)
 % img_h(234,234)
+% color_s(1,1)
+% color_s(2,1)
 
 valid_ha = ( ( img_h(:,:) >= color_s(1,1)) & ( img_h(:,:) < color_s(1,2)) );
 valid_hb = ( ( img_h(:,:) >= color_s(2,1)) & ( img_h(:,:) < color_s(2,2)) );
@@ -31,12 +33,18 @@ valid_a = valid_ha .* valid_sa .* valid_la;
 valid_b = valid_hb .* valid_sb .* valid_lb;
 
 
-%% label
-[L_a, num_a] = bwlabel(valid_a, 8);
-[L_b, num_b] = bwlabel(valid_b, 8);
-% [L_a, num_a] = bwlabel(valid_a, 4);
-% [L_b, num_b] = bwlabel(valid_b, 4);
+sum(sum(valid_ha))
+sum(sum(valid_sa))
+sum(sum(valid_la))
+sum(sum(valid_a))
 
+%% label
+% [L_a, num_a] = bwlabel(valid_a, 8);
+% [L_b, num_b] = bwlabel(valid_b, 8);
+[L_a, num_a] = bwlabel(valid_a, 4);
+[L_b, num_b] = bwlabel(valid_b, 4);
+
+% imshow(L_a )
 
 figure(13)
 subplot(2,1,1);
@@ -57,7 +65,7 @@ cl_type = [];
 
 %% filter too small cluster
 %% channel A
-for i = 1:num_a,
+for i = 1:num_a
     idx = find(L_a == i);
    
     if ( (size( (idx),1) < min_pxarea) || (size( (idx),1) > max_pxarea) )

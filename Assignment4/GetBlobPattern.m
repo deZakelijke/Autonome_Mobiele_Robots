@@ -27,8 +27,8 @@ while true
 	radius_inner = Rmin;
 
 	%% color segment
-	[cl_angles, cl_center, cl_type] = color_segment(color_s, img, sat, lum, max_pxarea, min_pxarea, img_center, radius, radius_inner , stdthreshold);
-	[ cl_center , cl_type ]
+	[cl_angles, cl_center, cl_type] = color_segment(color_s, img, sat, lum, max_pxarea, min_pxarea, img_center, radius, radius_inner , stdthreshold)
+% 	[ cl_center , cl_type ]
 
 	%% just to see
 	rad2deg(cl_angles);
