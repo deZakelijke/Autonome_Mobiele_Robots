@@ -6,7 +6,7 @@ configfile_blobs;
 % Loop - while the user wants, get image, compute pattern, store pattern
 NumStrings = 0;
 imgNum = 1;
-while true
+while imgNum <= 8
 	% Get user input for looping
 	Option = input('Get a new image [1/0] : ');
 	if Option == 0, break; end

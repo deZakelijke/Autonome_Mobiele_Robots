@@ -18,21 +18,22 @@
 color_s = zeros(2,2);
 % green
 % color_s(1,:) = [0.3 0.4]; % green
-% color_s(1,:) = [0.01 0.15];  %orange
+color_s(1,:) = [0.01 .15];  %orange
 % blue
 % color_s(2,:) = [0.52 0.58];
 
 % color_s(1,:) = [118 125] / 255; % green
-color_s(1,:) = [80 140] / 360; % green
-color_s(2,:) = [180 195] / 360;  %blue
+% color_s(1,:) = [80 140] / 360; % green
+color_s(2,:) = [180 225] / 360;  %blue
 
+color_s
 
 %% def values for saturation and luminance
 % sat = [0.3 1];  % use for green
 % sat = [0.01 1];  % orange
-sat = [0.01 1];  % orange
+sat = [0.01 0.5];  % orange
 % lum = [0.3 0.95];
-lum = [0.4 1];
+lum = [0.01 0.5];
 
 %% min pxl area
 % min_pxarea = 300;
