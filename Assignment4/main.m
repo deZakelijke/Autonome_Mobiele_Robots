@@ -62,7 +62,7 @@ end
 %    GetLinePattern(cent  er, Rmax, Rmin);
 % end
 
-for i=9
+for i=9:10
     step_num = i;
     %% steps 1-5: camera and scanning
     %% steps 6-10: localization experiment
