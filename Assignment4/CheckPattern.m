@@ -9,30 +9,39 @@ text = '(e.g. line patterns, blob patterns or fusion of these 2 patterns).';
 disp(text);
 load 'LabeledLineSignatures.mat'
 load 'UnlabeledLineSignatures.mat'
+load 'LabeledBlobSignatures.mat'
+load 'UnlabeledBlobSignatures.mat'
 
-testLength = length(PatStringsU);
+testLengthL = length(PatStringsU);
+testLengthB = length(PatStringsBlobU);
 
 locations = unique(PlaceID);
-sz = size(PatStrings,2);
+probLocation = 1/length(PlaceID);
 
-for j=1:testLength
+for j=1:testLengthL
     
-    newObs = PatStringsU{j};
-    probList = [];
-    ProbMax = 0;
+    newObsL = PatStringsU{j};
+    newObsB = PatStringsBlobU{j};
+    probListL = [];
+    probListB = [];
     
     for i=1:length(PlaceID)
-        dist = LevenshteinDistance(newObs, PatStrings{i});
-        len = length(PatStrings{i});
-        similarity = (len -dist ) /len;
+        distL = abs(LevenshteinDistance(newObsL, PatStrings{i}));
+        distB = abs(LevenshteinDistance(newObsB, PatStringsBlob{i}));
+        lenL = length(PatStrings{i});
+        lenB = length(PatStringsBlob{i});
+        similarityL = (lenL - distL ) /lenL;
+        similarityB = (lenB - distB ) /lenB;
 %         roomQuantity = sum(PlaceID(:) == i);
 %         probLocation =  roomQuantity/length(PlaceID);
-        probLocation = 1/length(PlaceID);
-        prob = similarity * probLocation;
-        probList = [probList prob];
+        probL = similarityL * probLocation;
+        probB = similarityB * probLocation;
+        probListL = [probListL probL];
+        probListB = [probListB probB];
        
     end
-%     probList
+    probList = (probListL + probListB)/2;
+
     [M,I] = max(probList);
     Room = PlaceID(I);
 %     for i=1:length(locations)
