@@ -35,12 +35,16 @@ for j=1:testLengthL
         similarityB = (lenB - distB ) /lenB;
 %         roomQuantity = sum(PlaceID(:) == i);
 %         probLocation =  roomQuantity/length(PlaceID);
-        probL = similarityL * probLocation;
-        probB = similarityB * probLocation;
+        probObsL = probabilityOfObesrvation(PatStrings, newObsL, probLocation, lenL);
+        probObsB = probabilityOfObservation(PatStringsBlob, newObsB, probLocation, lenB);
+        probL = similarityL * probLocation / probObsL;
+        probB = similarityB * probLocation / probObsB;
         probListL = [probListL probL];
         probListB = [probListB probB];
        
     end
+    probListL
+    probListB
     probList = (probListL + probListB)/2;
 
     [M,I] = max(probList);
