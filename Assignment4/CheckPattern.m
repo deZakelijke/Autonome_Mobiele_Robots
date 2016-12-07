@@ -7,10 +7,11 @@ text = 'Write your code here to compute the probability of localization using an
 disp(text);
 text = '(e.g. line patterns, blob patterns or fusion of these 2 patterns).';
 disp(text);
-load 'LabeledLineSignatures.mat'
+
 load 'UnlabeledLineSignatures.mat'
 load 'LabeledBlobSignatures.mat'
 load 'UnlabeledBlobSignatures.mat'
+load 'LabeledLineSignatures.mat'
 
 testLengthL = length(PatStringsU);
 testLengthB = length(PatStringsBlobU);
