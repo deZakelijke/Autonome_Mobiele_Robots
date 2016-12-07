@@ -25,7 +25,11 @@ while imgNum <= 8
     %url = get_camera_url();
 	%img = imread(url);
     imgStr = num2str(imgNum);
-    fileName = strcat(imgStr, '.jpg');
+    if training == 'l'
+        fileName = strcat(imgStr, '.jpg');
+    else
+        fileName = strcat(imgStr, 'Test.jpg');
+    end
     
     img = imread(fileName);
  	figure(12), clf; imshow(img);
@@ -36,7 +40,7 @@ while imgNum <= 8
 	radius_inner = Rmin;
 
 	%% color segment
-	[cl_angles, cl_center, cl_type] = color_segment(color_s, img, sat, lum, max_pxarea, min_pxarea, img_center, radius, radius_inner , stdthreshold)
+	[cl_angles, cl_center, cl_type] = color_segment(color_s, img, sat, lum, max_pxarea, min_pxarea, img_center, radius, radius_inner , stdthreshold);
 % 	[ cl_center , cl_type ]
 
 	%% just to see
@@ -60,8 +64,8 @@ while imgNum <= 8
 	disp(sprintf('BLOB Pattern string:  %s', num2str(S)));
 
         if training == 'l'
-	    PatStringsBlob{NumStrings} = S;
-	    PlaceID(NumStrings) = PlaceNum;
+            PatStringsBlob{NumStrings} = S;
+            PlaceID(NumStrings) = PlaceNum;
         else
             PatStringsBlobU{NumStrings} = S;
         end

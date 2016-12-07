@@ -62,7 +62,7 @@ end
 %    GetLinePattern(cent  er, Rmax, Rmin);
 % end
 
-for i=8:10
+for i=9
     step_num = i;
     %% steps 1-5: camera and scanning
     %% steps 6-10: localization experiment
@@ -120,6 +120,7 @@ for i=8:10
     
     %% step 9: test how distinctive the gathered line patterns
     if step_num == 9
+        disp('Calculating confidence matrix for blobs');
         testPlaceBlobs();
     end
     
@@ -127,6 +128,10 @@ for i=8:10
     if step_num == 10
         % WRITE YOUR CODE INSIDE THIS FUNCTION
         CheckPattern();
+    end
+    
+    if step_num == 11
+        kMeans()
     end
 
 end
