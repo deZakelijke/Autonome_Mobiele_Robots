@@ -3,6 +3,7 @@ function GetBlobPattern(center, Rmax, Rmin)
 path(path, './scans/');
 configfile_blobs;
 
+
 % Loop - while the user wants, get image, compute pattern, store pattern
 NumStrings = 0;
 PatStringsBlob = {};
@@ -59,16 +60,20 @@ while imgNum <= 8
 	disp(sprintf('BLOB Pattern string:  %s', num2str(S)));
 
         if training == 'l'
-	    S_store(NumStrings).lev = S;
-	    PlaceID(NumStrings) = PlaceNum;
+	    PatStringsBlob{NumStrings} = S;
+	    PlaceID{NumStrings} = PlaceNum;
         else
-
+            PatStringsBlobU{NumStrings} = S;
         end
     
     imgNum = imgNum + 1;
 end
 
-save 'BlobSignatures.mat' S_store PlaceID;
+if training == 'l'
+    save 'LabeledBlobSignatures.mat' PatStringsBlob PlaceID;
+else
+    save 'UnlabeledBlobSignatures.mat' PatStringsBlobU;
+end
 close all
 
 end
