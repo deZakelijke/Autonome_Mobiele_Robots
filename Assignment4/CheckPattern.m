@@ -25,7 +25,7 @@ for j=1:testLength
         dist = LevenshteinDistance(newObs, PatStrings{i});
         len = length(PatStrings{i});
         similarity = (len -dist ) /len;
-        roomQuantity = sum(PlaceID(:) == i);
+        roomQuantity = sum(PlaceID(:) == i)
         probLocation =  roomQuantity/length(PlaceID);
         prob = similarity * probLocation;
         probList = [probList prob];
