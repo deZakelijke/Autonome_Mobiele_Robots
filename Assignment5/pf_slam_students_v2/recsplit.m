@@ -22,6 +22,9 @@ function [NLines, r, alpha, segend, seglen] = recsplit(XY)
 	Split(XY, ClusterIdx(i,1), ClusterIdx(i,2));
     
     NLines = NLines + NLines_i;
+    disp('---');
+    size(r)
+    size(r_i)
     r = [r; r_i];
     alpha = [alpha ; alpha_i];
     PointIdx = [PointIdx ; PointIdx_i];
