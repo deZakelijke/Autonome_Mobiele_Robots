@@ -42,6 +42,8 @@ triggerconfig(vid, 'manual');
 % frames to memory at this point.
 start(vid)
 
+url = get_camera_url();
+snapshot = imread(url);
 %% This lunches the camera calibration
 cal = 1;
 while(cal == 1)     %% It will keep calibrating until you are satisfied
